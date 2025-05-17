@@ -299,31 +299,29 @@ As such, when $a$ is integrable, %ESCOLHER O QUE QUERES USAR AQUI
 \[
 CK[u_0](x_0, \un{x}) = \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A^k(x_0)\un{\D}^ku_0(\un{x})
 \]
-is an explicit solution to the Cauchy problem (\ref{CP}). Aditionally, due to the properties of the CK-extension, when $a$ is infinitely diferentiable the solution is also unique. 
+is an explicit solution to the Cauchy problem (\ref{CP}). Aditionally, due to the properties of CK-extension, when $a$ is infinitely diferentiable the solution is also unique. 
 \end{proof}
-For infintely differentiable $u_0$, there is a simple norm estimate for the CK-extension obtained above.
+For $u_0 \in H^s$ and $a \in C[0,T]$, there is a simple norm estimate for the CK-extension obtained above.
 
-Given that  NO PREL PÔR ESTAS NORMAS
+Given that  !!NO PREL PÔR ESTAS NORMAS
 \[
-\hnorm{(x_0\un{\D})u_0}{p} \leq \norm{x_0}\hnorm{u_0}{\infty}. 
+\|{(f(\cdot)\un{\D})u_0(\cdot)}\|_X = \max_{x_0 \in [0,T]}\hnorm{f(x_0)\un{\D}u_0(\cdot)}{s} %\leq  \hnorm{f(x_0)\un{\D}u_0(x_0, \cdot)}{s+1} $
+\leq \max_{x_0 \in [0,T]}|f(x_0)|\hnorm{u_0}{\infty},
 \]
-It is also true that
+repeating this step $k$ times results in the following inequality:
 \[
-\hnorm{(x_0\un{\D})^ku_0}{p} \leq \norm{x_0}\hnorm{(x_0\un{\D})^{k-1}u_0}{\infty}. 
+\|{(f(x_0)^k\un{\D}^k)u_0}\|_X = \max_{x_0 \in [0,T]}\hnorm{f(x_0)^k\un{\D}^ku_0(\cdot)}{s} %\leq  \hnorm{f(x_0)\un{\D}u_0(x_0, \cdot)}{s+1} $
+\leq \max_{x_0 \in [0,T]}|f(x_0)|^k\hnorm{u_0}{\infty}
 \]
-Repeating this step $k$ times:
-\[
-\hnorm{(x_0\un{\D})^ku_0}{p} \leq \norm{x_0}^k \hnorm{u_0}{\infty}. 
-\]
-Adapting to our case we have, with $\sup_{t \in [0, T]} (\norm{A(t)}) = A$,
+Adapting to our case, we define $\max_{x_0 \in [0, T]} (\norm{A(x_0)}) = A$ and obtain
 
 \[
-\|(A(\cdot)\un{\D} )^k u_0\|_{H^p([0,T]\times \un \Omega)}  \leq A^k \hnorm{u_0}{\infty}
+\|(A(\cdot)\un{\D}u_0(\cdot))^k u_0\|_X  \leq A^k \hnorm{u_0}{\infty}.
 \]
 As such, a possible energy estimate for the CK-extension is 
 \begin{align*}
-\| CK[u_0]\|_{H^p([0,T]\times \un \Omega)}    &= \| \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A(\cdot)^k\un{\D}^ku_0\|_{H^p([0,T]\times \un \Omega)} \\
-        &\leq \sum_{k = 0}^\infty \frac{1}{k!}\|A(\cdot)^k\un{\D}^ku_0\|_{H^p([0,T]\times \un \Omega)} \\
+\| CK[u_0]\|_{X}    &= \| \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A(\cdot)^k\un{\D}^ku_0\|_{X} \\
+        &\leq \sum_{k = 0}^\infty \frac{1}{k!}\|A(\cdot)^k\un{\D}^ku_0\|_{X} \\
         &\leq  \left( \sum_{k = 0}^\infty \frac{A^k}{k!} \right) \hnorm{u_0}{\infty}\\
         &= e^{A}\hnorm{u_0}{\infty}.
 \end{align*}
