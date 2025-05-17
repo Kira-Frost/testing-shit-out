@@ -5,8 +5,8 @@
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\x}{x}
 \newcommand{\norm}[1]{|#1|}
-\newcommand{\dnorm}[2]{||#1||_{#2}}
-\newcommand{\hnorm}[2]{\dnorm{#1}{H^{#2}}}
+\newcommand{\dnorm}[2]{\|#1\|_{#2}}
+\newcommand{\hnorm}[2]{\dnorm{#1}{H^{#2}(\un\Omega)}}
 \newcommand{\comment}[1]{}
 %%%%%
 
@@ -73,13 +73,9 @@ In this paper we will discuss the possibility to study very weak solutions of Di
 
 \section{Introduction}
 
-One of the interesting problems in the theory of partial differential equations is the study of differential equations with distributional coefficients. Unfortunately, there exists a major obstacle. Since the point-wise multiplication of distributions is ill-defined even questions as simple as the existence of a solution becomes a major challenge. 
 
-During the last decade M. Ruzhansky and his collaborators introduces a new concept of a solution, so-called very weak solutions, whereby the solution is given in terms of a net or family of regularized solutions. 
 
-As far as we know up to now this concept was not adapted to the case of differential equations in the context of hypercomplex analysis.
-
-In this paper we will consider the following Cauchy problem:
+Let us  consider the following Cauchy problem:
 \begin{equation}
   \begin{cases}
 \partial_{x_0} u(x_0+\un{x}) + a(x_0)D u(x_0+\un{x}) = 0, & \text{with } x \in (0, T]\times\Omega, \\
@@ -261,94 +257,99 @@ $$
 The classic CK-extension method allows one to construct monogenic functions over domains in $\R^{n+1}$ from analytic functions over $\R^n$. 
 
 \begin{theorem}
-    The CK-Extension
+    Let $\un{\Omega}\in \R^n$ be an open domain, $u_0 \in C^\infty(\un{\Omega})$ and $a$ be an integrable function in $[0,T]$, then the CK-extension
     \[
-        CKu_0(x_0, x) = \sum_{k = 0}^\infty \frac{(-1)^k}{k!}[A(x_0)-A(0)]^k\underline{\D}^ku_0(x)
+        CK[u_0](x_0, \un x) = \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A^k(x_0)\un{\D}^ku_0(\un{x})
     \]
     solves the following Cauchy problem
     \[
     \begin{cases}
-    \partial_{x_0} u(x_0,x) + a(x_0)\underline{\D} u(x_0,x) = 0, & \text{with } x_0 \in (0, T], \\
-    u(0,x) = u_0(x),\;\; x\in \Omega,
-    \end{cases} 
-    \]
+    \partial_{x_0} u(x_0,\un{x}) + a(x_0)\un{\D} u(x_0,\un{x}) = 0, & \text{with } x_0 \in (0, T] \text{ and } \un{x} \in \un{\Omega}, \\
+    u(0,\un{x}) = u_0(\un{x}),\;\; \un{x}\in \un{\Omega},
+    \end{cases}    \]
+     where $A(x) = \int_0^x a(t) dt.$ 
+
     
 \end{theorem}
 \begin{proof}
-It is reasonable to expect that the appropriate CK-Extension for the Cauchy problem (\ref{CP}) will be of the form
+We look into the %It is reasonable to expect that the 
+appropriate CK-extension for the Cauchy problem (\ref{CP}) %will be 
+of the form
 \[
-CKu_0(x_0, x)=\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\underline{\D}^ku_0(x),
+CK[u_0](x_0, \un{x})=\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\un{\D}^ku_0(\un{x}),
 \]
-for some function $\phi$.
+for some non-zero differentiable function $\phi$ in $[0,T]$.
 
-If $CK(u)$ is a solution to the differential equation
+As $CK[u_0]$ should be a solution to the differential equation
 
 \[
-(\partial_0 + a(x_0)\underline{\D})CKu_0 =0,
+(\partial_0 + a(x_0)\un{\D})CK[u_0] =0,
 \]
 then
 \begin{align*}
     0 
-    &= (\partial_0 + a(x_0)\underline{\D})(\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\underline{\D}^ku_0(x)) \\
-    & = \partial_0[u_0(x) + \sum_{k = 1}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\underline{\D}^ku_0(x)]\\
-    &+a(x_0)\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\underline{\D}^{k+1}u_0(x) \\
-    & = \sum_{k = 1}^\infty \frac{(-1)^k}{(k-1)!}\phi(x_0)^{k-1}\phi'(x_0)\underline{\D}^ku_0(x) \\
-    &+\sum_{k = 0}^\infty \frac{(-1)^k}{k!}a(x_0)\phi(x_0)^k\underline{\D}^{k+1}u_0(x) \\
-    &= \sum_{k = 0}^\infty \frac{(-1)^{k+1}}{k!}\phi(x_0)^k\phi'(x_0)\underline{\D}^{k+1}u_0(x) \\
-    &+\sum_{k = 0}^\infty \frac{(-1)^k}{k!}a(x_0)\phi(x_0)^k\underline{\D}^{k+1}u_0(x) \\
-    &= \sum_{k = 0}^\infty [-\phi'(x_0) + a(x_0)]\frac{(-1)^k}{k!}\phi(x_0)^k\underline{\D}^{k+1}u_0(x).
+    &= (\partial_0 + a(x_0)\un{\D})\Big(\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\un{\D}^ku_0(\un{x}) \Big) \\
+   & = \partial_0[u_0(\un{x}) + \sum_{k = 1}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\un{\D}^ku_0(\un{x})]\\
+    &+a(x_0)\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(x_0)^k\un{\D}^{k+1}u_0(\un{x}) \\
+      & = \sum_{k = 1}^\infty \frac{(-1)^k}{(k-1)!}\phi(x_0)^{k-1}\phi'(x_0)\un{\D}^ku_0(\un{x}) \\
+    &+\sum_{k = 0}^\infty \frac{(-1)^k}{k!}a(x_0)\phi(x_0)^k\un{\D}^{k+1}u_0(\un{x}) \\
+    &= \sum_{k = 0}^\infty \frac{(-1)^{k+1}}{k!}\phi(x_0)^k\phi'(x_0)\un{\D}^{k+1}u_0(\un{x}) \\
+    &+\sum_{k = 0}^\infty \frac{(-1)^k}{k!}a(x_0)\phi(x_0)^k\un{\D}^{k+1}u_0(\un{x}) \\
+    &= \sum_{k = 0}^\infty [-\phi'(x_0) + a(x_0)]\frac{(-1)^k}{k!}\phi(x_0)^k\un{\D}^{k+1}u_0(\un{x}).
 \end{align*}
-Since this equality has to hold for every $u_0$ and $\phi$ is non null then,
+Since this equality has to hold for every $u_0$ and $\phi$ is non-zero then,
 \[  
 -\phi'(x) + a(x) = 0. 
 \]
 This is an ODE with a classical solution
 \[
-\phi(x) = \int a(x) dx + C, \qquad C\in \mathbb{R}
+\phi(x) = \int_0^x a(t) dt + C, \qquad C\in \mathbb{R}
 \]
-For shorthand, let's define $A(x) = \int a(x) dx$.
-Given the boundry condition of the Cauchy problem (\ref{CP}),
-\begin{align*}
-    u_0(x) 
-    &= CKu_0(0, x)\\
-    &=\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(0)^k\underline{\D}^ku_0(x)\\
-    &=\sum_{k = 0}^\infty \frac{(-1)^k}{k!}[A(0)-C]^k\underline{\D}^ku_0(x).
-\end{align*}
-Since this condition has to hold for every suitable $u_0$,
-\[
-C = A(0).
-\]
-As such, when $a$ is integrable,
-\[
-CKu_0(x_0, x) = \sum_{k = 0}^\infty \frac{(-1)^k}{k!}[A(x_0)-A(0)]^k\underline{\D}^ku_0(x)
-\]
-is an explicit solution to the Cauchy problem (\ref{CP}). Aditionally, due to the properties of the CK-Extension, when $a$ is infinitely diferentiable the solution is also unique. 
-\end{proof}
-For infintely differentiable $u_0$, there is a simple norm estimate for the CK-Extension obtained above.
+For shorthand, let us define $A(x) = \int_0^x a(t) dt$.
 
-Given that
+As $CK[u_0]$ should also be a solution to the boundary condition of the Cauchy problem (\ref{CP}), then
+%Given the boundary condition of the Cauchy problem (\ref{CP}), we get
+\begin{align*}
+    u_0(\un x) 
+    &= CK[u_0](0, \un x)\\
+    &=\sum_{k = 0}^\infty \frac{(-1)^k}{k!}\phi(0)^k\un{\D}^ku_0(\un{x})\\
+    &= C^0u_0(\un{x})+ \sum_{k = 1}^\infty \frac{(-1)^k}{k!}C^k\un{\D}^ku_0(\un{x}).
+\end{align*}
+This leads to the condition %Since this condition has to hold for every suitable $u_0$,
 \[
-\dnorm{(x_0\D)u_0}{H^p} \leq \norm{x_0}\dnorm{u_0}{H^{\infty}}. 
+C = 0.
+\]
+As such, when $a$ is integrable, %ESCOLHER O QUE QUERES USAR AQUI
+\[
+CK[u_0](x_0, \un{x}) = \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A^k(x_0)\un{\D}^ku_0(\un{x})
+\]
+is an explicit solution to the Cauchy problem (\ref{CP}). Aditionally, due to the properties of the CK-extension, when $a$ is infinitely diferentiable the solution is also unique. 
+\end{proof}
+For infintely differentiable $u_0$, there is a simple norm estimate for the CK-extension obtained above.
+
+Given that  NO PREL PÔR ESTAS NORMAS
+\[
+\hnorm{(x_0\un{\D})u_0}{p} \leq \norm{x_0}\hnorm{u_0}{\infty}. 
 \]
 It is also true that
 \[
-\dnorm{(x_0\D)^ku_0}{H^p} \leq \norm{x_0}\dnorm{(x_0\D)^{k-1}u_0}{H^{\infty}}. 
+\hnorm{(x_0\un{\D})^ku_0}{p} \leq \norm{x_0}\hnorm{(x_0\un{\D})^{k-1}u_0}{\infty}. 
 \]
 Repeating this step $k$ times:
 \[
-\dnorm{(x_0\D)^ku_0}{H^p} \leq \norm{x_0}^k\dnorm{u_0}{H^{\infty}}. 
+\hnorm{(x_0\un{\D})^ku_0}{p} \leq \norm{x_0}^k \hnorm{u_0}{\infty}. 
 \]
-Adapting to our case we have, with $\sup (\norm{A(x_0)-A(0)}) = a_1$,
+Adapting to our case we have, with $\sup_{t \in [0, T]} (\norm{A(t)}) = A$,
 
 \[
-\hnorm{((A(x_0)-A(0))\D )^k u_0}{p}\leq a_1^k \hnorm{u_0}{\infty}
+\|(A(\cdot)\un{\D} )^k u_0\|_{H^p([0,T]\times \un \Omega)}  \leq A^k \hnorm{u_0}{\infty}
 \]
-As such, a possible energy estimate for the CK-Extension is 
+As such, a possible energy estimate for the CK-extension is 
 \begin{align*}
-\hnorm{CKu_0}{p}    &= \hnorm{\sum_{k = 0}^\infty \frac{(-1)^k}{k!}[A(x_0)-A(0)]^k\underline{\D}^ku_0(x)}{p}\\
-        &\leq \sum_{k = 0}^\infty \frac{1}{k!}\hnorm{[A(x_0)-A(0)]^k\underline{\D}^ku_0(x)}{p} \\
-        &\leq \sum_{k = 0}^\infty \frac{a_1^k}{k!}\hnorm{u_0(x)}{\infty}\\
-        &= e^{a_1}\hnorm{u_0(x)}{\infty}.
+\| CK[u_0]\|_{H^p([0,T]\times \un \Omega)}    &= \| \sum_{k = 0}^\infty \frac{(-1)^k}{k!}A(\cdot)^k\un{\D}^ku_0\|_{H^p([0,T]\times \un \Omega)} \\
+        &\leq \sum_{k = 0}^\infty \frac{1}{k!}\|A(\cdot)^k\un{\D}^ku_0\|_{H^p([0,T]\times \un \Omega)} \\
+        &\leq  \left( \sum_{k = 0}^\infty \frac{A^k}{k!} \right) \hnorm{u_0}{\infty}\\
+        &= e^{A}\hnorm{u_0}{\infty}.
 \end{align*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -637,8 +638,6 @@ This completes the proof of Theorem~\ref{th1.5}.
 \end{proof}
 Now we prove Theorem~\ref{th1.7}.
 
-\newpage
-
 
 %%%%%%%%
 
@@ -670,81 +669,75 @@ Denote by $L_{1}^{\infty}([0,T])$ the space of bounded functions on $[0,T]$ with
 
 with  $\rho_\varepsilon = ( a_\varepsilon(x_0)-\widetilde{a}_\varepsilon(x_0) )\mathcal{D}v_\varepsilon(x_0)$, where $(\widetilde{a}_\varepsilon)_\varepsilon$ is an approximation corresponding to $u_\varepsilon$. Since $(a_\varepsilon)_\varepsilon \sim (\widetilde{a}_\varepsilon)_\varepsilon$, we have that $\rho_\varepsilon$ is $C^\infty([0, T]; H^s)$-negligible. Let us write this as in the following first order equation
 \[
-\partial_{x_0} W_{\varepsilon} +  a_\varepsilon(x_0)\mathcal{D}  W_{\varepsilon} =\rho_\varepsilon,
+\partial_{x_0} w_{\varepsilon} +  a_\varepsilon(x_0)\mathcal{D}  w_{\varepsilon} =\rho_\varepsilon,
 \]
 where
 \[
-W_{\varepsilon} := (u_\varepsilon - v_\varepsilon).
+w_{\varepsilon} := u_\varepsilon - v_\varepsilon.
 \]
 
 
 Using the Fourier transform,
 \[
-\partial_{x_0} V_\varepsilon(x_0, \xi) + i \xi A_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi) = P_\varepsilon(x_0, \xi),
+\partial_{x_0} \hat{w}_\varepsilon(x_0, \xi) + i \xi a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi) = \hat{\rho}_\varepsilon(x_0, \xi),
 \]
 
 for all $\xi \in \mathbb{R}^n$. We define the energy
 \[
-E_\varepsilon(x_0, \xi) := \mathrm{Re}(S_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi))
+E_\varepsilon(x_0, \xi) := \mathrm{Re}(\langle a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle)
 \]
-for the symmetriser $S_\varepsilon(x_0, \xi) =  a_\varepsilon(x_0)$. Since $a_\varepsilon(x_0)$ is continuous, then from the definition of the energy we get
+Since $a_\varepsilon(x_0)$ is continuous, then from the definition of the energy we get
 \begin{equation}
 \label{eq3.12}
-c_0 |V_\varepsilon(x_0, \xi)|^2 \leq E_\varepsilon(x_0, \xi) \leq c_1 |V_\varepsilon(x_0, \xi)|^2
+c_0 |\hat{w}_\varepsilon(x_0, \xi)|^2 \leq E_\varepsilon(x_0, \xi) \leq c_1 |\hat{w}_\varepsilon(x_0, \xi)|^2
 \end{equation}
 for some positive constants $c_0$ and $c_1$. Then, a direct calculation gives that
 \begin{gather*}
-\partial_{x_0} E_\varepsilon(x_0, \xi) = \mathrm{Re}\big[(\partial_{x_0} S_\varepsilon(x_0, \xi)V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) + (S_\varepsilon(x_0, \xi) \partial_{x_0} V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi))\\ + (S_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi), \partial_{x_0} V_\varepsilon(x_0, \xi))\big]\\
-= \mathrm{Re}\big[(\partial_{x_0} S_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) + i \xi (S_\varepsilon(x_0, \xi)A_\varepsilon(t, \xi)V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi))\\
-- i \xi (S_\varepsilon(x_0, \xi)V_\varepsilon(x_0, \xi), A_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi)) + (S_\varepsilon(x_0, \xi)P_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) +\\ (S_\varepsilon(x_0, \xi)V_\varepsilon(x_0, \xi), P_\varepsilon(x_0, \xi))\big]\\
-= \mathrm{Re}\big[(\partial_{x_0} S_\varepsilon(x_0, \xi)V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) + i \xi ((S_\varepsilon A_\varepsilon - A^*_\varepsilon S_\varepsilon)(x_0, \xi) V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) \\+ (S_\varepsilon(x_0, \xi)P_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) + (V_\varepsilon(x_0, \xi), S_\varepsilon(x_0, \xi) P_\varepsilon(x_0, \xi))\big]\\ = \mathrm{Re}\big[(\partial_{x_0} S_\varepsilon(x_0, \xi)V_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi)) + 2 \text{Re}(S_\varepsilon(x_0, \xi) P_\varepsilon(x_0, \xi), V_\varepsilon(x_0, \xi))\big]
+\partial_{x_0} E_\varepsilon(x_0, \xi) = \mathrm{Re}\big(\langle \partial_{x_0} a_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle + \langle a_\varepsilon(x_0, \xi) \partial_{x_0} \hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle\\ + \langle a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi), \partial_{x_0} \hat{w}_\varepsilon(x_0, \xi)\rangle\big)\\             
+= \mathrm{Re}\big(\langle\partial_{x_0} a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle + i \xi \langle a^2_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle\\
+- i \xi \langle a_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi)\rangle + \langle a_\varepsilon(x_0, \xi)\hat{\rho}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle +\\ \langle a_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), \hat{\rho}_\varepsilon(x_0, \xi)\rangle\big)\\
+= \mathrm{Re}\big( \langle \partial_{x_0} a_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi) \rangle + \langle a_\varepsilon(x_0, \xi)\hat{\rho}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle \\+ \langle\hat{w}_\varepsilon(x_0, \xi), a_\varepsilon(x_0, \xi) \hat{\rho}_\varepsilon(x_0, \xi)\rangle\big)\\ = \mathrm{Re}\big(\langle\partial_{x_0} a_\varepsilon(x_0, \xi)\hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle \big) + 2 \text{Re}\big( \langle a_\varepsilon(x_0, \xi) \hat{\rho}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle\big)
 \end{gather*}
 \begin{equation}
 \label{eq.3.13}
- \leq |\partial_{x_0} S_\varepsilon| |V_\varepsilon(x_0, \xi)|^2 + 2 |S_\varepsilon| |P_\varepsilon(x_0, \xi)| |V_\varepsilon(x_0, \xi)|,   
+ \leq |\partial_{x_0} a_\varepsilon| |\hat{w}_\varepsilon(x_0, \xi)|^2 + 2 |a_\varepsilon| |\hat{\rho}_\varepsilon(x_0, \xi)| |\hat{w}_\varepsilon(x_0, \xi)|.  
 \end{equation}
-
-
-where we have used $(S_\varepsilon A_\varepsilon - A^*_\varepsilon S_\varepsilon)(x_0, \xi) = 0$. \\
-In the case where $|V_\varepsilon(x_0, \xi)| \geq 1$, taking into account~(\ref{eq3.12}) we obtain from the above that
-\begin{gather*}
-\partial_{x_0} E_\varepsilon(x_0, \xi)\leq \|\partial_{x_0} S_\varepsilon\| |V_\varepsilon(x_0, \xi)|^2 + 2 \|S_\varepsilon\| |P_\varepsilon(x_0, \xi)| |V_\varepsilon(x_0, \xi)|\\
- \leq (\|\partial_{x_0} S_\varepsilon\| + 2 \|S_\varepsilon\| |P_\varepsilon(x_0, \xi)|) |V_\varepsilon(x_0, \xi)|^2 \\
-\leq (|\partial_{x_0} a_\varepsilon(x_0)| + 2 |a_\varepsilon(x_0)| |P_\varepsilon(x_0, \xi)|) |V_\varepsilon(x_0, \xi)|^2 \leq c (\omega(\varepsilon))^{-L-1} E_\varepsilon(x_0, \xi)
-\end{gather*}
+In the case where $|\hat{w}_\varepsilon(x_0, \xi)| \geq 1$, taking into account~(\ref{eq3.12}) we obtain from the inequality above that
+\begin{align*}
+\partial_{x_0} E_\varepsilon(x_0, \xi)&\leq |\partial_{x_0} a_\varepsilon| |\hat{w}_\varepsilon(x_0, \xi)|^2 + 2 |a_\varepsilon| |\hat{\rho}_\varepsilon(x_0, \xi)| |\hat{w}_\varepsilon(x_0, \xi)|\\
+ &\leq \big(|\partial_{x_0} a_\varepsilon| + 2 |a_\varepsilon| |\hat{\rho}_\varepsilon(x_0, \xi)| \big) |\hat{w}_\varepsilon(x_0, \xi)|^2 \\ 
+ &\leq c (\omega(\varepsilon))^{-L-1} E_\varepsilon(x_0, \xi)
+\end{align*}
 for some constant $c > 0$. Then, the Gronwall lemma implies that
 \[
 E_\varepsilon(x_0, \xi) \leq \exp(c (\omega(\varepsilon))^{-L-1} T) E_\varepsilon(0, \xi)
 \]
 for all $T > 0$. Hence, by~(\ref{eq3.12}) we obtain for the constant $c_1$ independent of $t \in [0, T]$ and $\xi$ that
 \[
-c_0 |V_\varepsilon(x_0, \xi)|^2 \leq E_\varepsilon(x_0, \xi)\leq \exp(c (\omega(\varepsilon))^{-L-1} T) E_\varepsilon(0, \xi) \leq \exp(c_1 (\omega(\varepsilon))^{-L-1} T) |V_\varepsilon(0, \xi)|^2.
+c_0 |\hat{w}_\varepsilon(x_0, \xi)|^2 \leq E_\varepsilon(x_0, \xi)\leq \exp(c (\omega(\varepsilon))^{-L-1} T) E_\varepsilon(0, \xi) \leq \exp(c_1 (\omega(\varepsilon))^{-L-1} T) |\hat{w}_\varepsilon(0, \xi)|^2.
 \]
 Choosing $(\omega(\varepsilon))^{-L-1} \approx \log \varepsilon$, we get
 \[
-|V_\varepsilon(x_0, \xi)|^2 \leq c \varepsilon^{-L-1} |V_\varepsilon(0, \xi)|^2
+|\hat{w}_\varepsilon(x_0, \xi)|^2 \leq c \varepsilon^{-L-1} |\hat{w}_\varepsilon(0, \xi)|^2
 \]
 for some positive constant $c$ and some $L$. It implies for all $\xi$ and $x_0 \in [0, T]$ that
 \[
-|V_\varepsilon(x_0, \xi)| \equiv 0,
+|\hat{w}_\varepsilon(x_0, \xi)| \equiv 0,
 \]
-since $|V_\varepsilon(0, \xi)| = 0$.
+since $|\hat{w}_\varepsilon(0, \xi)| = 0$.
 
-Now let us consider the case $|V_\varepsilon(x_0, \xi)| < 1$. Assume that
+Now let us consider the case $|\hat{w}_\varepsilon(x_0, \xi)| < 1$. Assume that
 \[
-|V_\varepsilon(x_0, \xi)| \geq c (\omega(\varepsilon))^\alpha
+|\hat{w}_\varepsilon(x_0, \xi)| \geq c (\omega(\varepsilon))^\alpha
 \]
 for some constant $c$ and $\alpha > 0$, i.e.
 \begin{equation}
 \label{eq3.15}
-\frac{1}{|V_\varepsilon(x_0, \xi)|} \leq C (\omega(\varepsilon))^{-\alpha}.
+\frac{1}{|\hat{w}_\varepsilon(x_0, \xi)|} \leq C (\omega(\varepsilon))^{-\alpha}.
 \end{equation}
 In this case, from~(\ref{eq3.15}) noting
-
-
-
 \[
-|V_\varepsilon(x_0, \xi)| = \frac{|V_\varepsilon(x_0, \xi)|^2}{|V_\varepsilon(x_0, \xi)|} \leq C (\omega(\varepsilon))^{-\alpha} |V_\varepsilon(x_0, \xi)|^2
+|\hat{w}_\varepsilon(x_0, \xi)| = \frac{|\hat{w}_\varepsilon(x_0, \xi)|^2}{|\hat{w}_\varepsilon(x_0, \xi)|} \leq C (\omega(\varepsilon))^{-\alpha} |\hat{w}_\varepsilon(x_0, \xi)|^2
 \]
 and~(\ref{eq3.12}), we get from~(\ref{eq.3.13}) the following energy estimate
 \[
@@ -752,19 +745,19 @@ and~(\ref{eq3.12}), we get from~(\ref{eq.3.13}) the following energy estimate
 \]
 where $L_1 = L + \max\{\alpha\}$. Again applying the Gronwall lemma, we arrive at
 \[
-|V_\varepsilon(x_0, \xi)|^2 \leq \exp(C' (\omega(\varepsilon))^{-L_1} T) |V_\varepsilon(0, \xi)|^2.
+|\hat{w}_\varepsilon(x_0, \xi)|^2 \leq \exp(C' (\omega(\varepsilon))^{-L_1} T) |\hat{w}_\varepsilon(0, \xi)|^2.
 \]
 Then, taking $(\omega(\varepsilon))^{-L_1} \approx \log \varepsilon$, it follows that
 \[
-|V_\varepsilon(x_0, \xi)|^2 \leq c' \varepsilon^{-L_1} |V_\varepsilon(0, \xi)|^2
+|\hat{w}_\varepsilon(x_0, \xi)|^2 \leq c' \varepsilon^{-L_1} |\hat{w}_\varepsilon(0, \xi)|^2
 \]
 for some $c'$ and some (new) $L_1$, which implies
 \[
-|V_\varepsilon(x_0, \xi)| = 0
+|\hat{w}_\varepsilon(x_0, \xi)| = 0
 \]
-for all $\xi$ and $x_0 \in [0, T]$, since we have $|V_\varepsilon(0, \xi)| = 0$.
+for all $\xi$ and $x_0 \in [0, T]$, since we have $|\hat{w}_\varepsilon(0, \xi)| = 0$.
 
-The case $|V_\varepsilon(x_0, \xi)| \leq c (\omega(\varepsilon))^\alpha$ for some constant $c$ and $\alpha > 0$ is trivial. Thus, the first part is proved.
+The case $|\hat{w}_\varepsilon(x_0, \xi)| \leq c (\omega(\varepsilon))^\alpha$ for some constant $c$ and $\alpha > 0$ is trivial. Thus, the first part is proved.
 
 
 \vspace{0.5cm}
@@ -778,10 +771,13 @@ The case $|V_\varepsilon(x_0, \xi)| \leq c (\omega(\varepsilon))^\alpha$ for som
 where $\rho_\varepsilon$ is $C^\infty([0, T]; H^{-\infty}_{(s)})$-negligible. 
 The equation will be studied after the group Fourier transform, as a system of the type
 \[
-\partial{x_0} V_\varepsilon(x_0, \xi) + i \xi A_\varepsilon(x_0, \xi) V_\varepsilon(x_0, \xi)= P_\varepsilon(x_0, \xi),
+\partial{x_0} \hat{w}_\varepsilon(x_0, \xi) + i \xi a_\varepsilon(x_0, \xi) \hat{w}_\varepsilon(x_0, \xi)= \hat{\rho}_\varepsilon(x_0, \xi),
 \]
-for all $\xi \in \mathbb{R}^n$ where $P_\varepsilon(x_0, \xi) = \mathcal{F}\rho_\varepsilon$.
-
+for all $\xi \in \mathbb{R}^n$.
+In this case we can define the energy as
+\[
+E_\varepsilon(x_0, \xi, \delta) := \mathrm{Re}(\langle (a_\varepsilon(x_0, \xi) + \delta^2) \hat{w}_\varepsilon(x_0, \xi), \hat{w}_\varepsilon(x_0, \xi)\rangle)
+\]
 
 Taking into account the properties in the proof of the Theorem~\ref{th1.1} we conclude that the Cauchy problem~(\ref{CP}) has a unique solution $v \in L^2([0, T]; H^{-\infty}_{(s)})$ for all $s \in \mathbb{R}$.\\
 This completes the proof of Theorem~\ref{th1.7}. 
