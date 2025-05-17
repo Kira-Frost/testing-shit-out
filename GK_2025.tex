@@ -78,12 +78,12 @@ In this paper we will discuss the possibility to study very weak solutions of Di
 Let us  consider the following Cauchy problem:
 \begin{equation}
   \begin{cases}
-\partial_{x_0} u(x_0+\un{x}) + a(x_0)D u(x_0+\un{x}) = 0, & \text{with } x \in (0, T]\times\Omega, \\
+\partial_{x_0} u(x_0+\un{x}) + a(x_0)\un{\D} u(x_0+\un{x}) = 0, & \text{with } (x_0, \un{x}) \in (0, T]\times\Omega, \\
 u(0,\un{x}) = u_0(\un{x}),\;\; \un{x}\in \Omega,
 \end{cases}
 \label{CP}  
 \end{equation}
-where $D := \sum_{k=1}^n e_k \partial_{x_k}$ is the Dirac operator, and $e_k$ are elements of a Clifford algebra satisfying $e_k e_j + e_j e_k = -2\delta_{kj}$.
+where $\un{\D} := \sum_{k=1}^n e_k \partial_{x_k}$ is the Dirac operator, and $e_k$ are elements of a Clifford algebra satisfying $e_k e_j + e_j e_k = -2\delta_{kj}$.
 %%%%%%%%%%%%% Theorem 1 and Theorem 2 %%%%%%%%%%%%%%%%
 
 \begin{theorem}
@@ -91,7 +91,7 @@ where $D := \sum_{k=1}^n e_k \partial_{x_k}$ is the Dirac operator, and $e_k$ ar
 Let \(x_0 > 0\). Let \(a \in \mathrm{Lip}([0, T])\) with \(a(x_0) \geq a_0 > 0\). Given \(s \in \mathbb{R}\), if the initial Cauchy data \(u_0\) are in \(H^{s}(\Omega)\), then there exists the unique solution of the homogeneous Cauchy problem~(\ref{CP}) (when \(f \equiv 0\)) in the space \(C([0, T], H^{s})\), satisfying the following inequality for all values of \(x_0 \in [0, T]\):
     \begin{equation*}
     \label{eq:1.5}
-          \| u(t, \cdot) \|_{H^s(\Omega)}^2  \leq C \| u_0 \|_{H^s(\Omega)}^2 .
+          \| u(x_0, \cdot) \|_{H^s(\Omega)}^2  \leq C \| u_0 \|_{H^s(\Omega)}^2 .
     \end{equation*}
 \end{theorem}
 
@@ -101,7 +101,7 @@ Let \(x_0 > 0\). Then we have:
 Let \(a \in \mathrm{Lip}([0, T])\) with \(a(x_0) \geq a_0 > 0\). Given \(s \in \mathbb{R}\), if \(f \in C([0, T], H^{s}(\Omega))\) and the initial Cauchy data \(u_0\) are in \(H^s\), then there exists a unique solution of~(\ref{CP}) in the space \(C([0, T], H^s(\Omega))\), satisfying the following inequality for all values of \(x_0 \in [0, T]\):
     \begin{equation}
     \label{eq:1.6}
-    \| u(t, \cdot) \|_{H^s(\Omega)}^2  \leq C\left(\| u_0 \|_{H^s(\Omega)}^2+\| f\|_{C([0, T], H^{s}(\Omega))}^2\right).
+    \| u(x_0, \cdot) \|_{H^s(\Omega)}^2  \leq C\left(\| u_0 \|_{H^s(\Omega)}^2+\| f\|_{C([0, T], H^{s}(\Omega))}^2\right).
    \end{equation}
 \end{theorem}
 
@@ -146,31 +146,7 @@ Let $a,b\in\Cl$, then
 \end{itemize}
 \end{proposition}
 
-Suppose $\Omega\subset\mathbb{R}^{n}$ is a bounded domain, with sufficiently smooth boundary $\Gamma$. We consider a domain $\Omega_T=[0,T]\times\Omega$. We will be interested in functions $f:\Omega_T \rightarrow\R_{0,n}$, which might be written as $f(x)=\sum_{A}f_A(x)e_A$ with $f_A$ being $\R$-valued. Property, such continuity, differentiability, integrability, and so on, can be ascribed coordinate-wise or directly. A left (unitary) module over $\R_{0,n}$ is a vector space $V$ together with an algebra morphism $L:\R_{0,n}\mapsto \mathrm{End}(V)$, or to say it more explicitly, there exists a linear transformation (also called left multiplication) $L(a)$ of $V$ such that
-$$
-L(ab+c)=L(a)L(b)+L(c)
-$$ 
-for all $a\in\R_{0,n}$, and $L(1)$ is the identity operator. In the same way we have a right (unitary) module if there is a so-called right multiplication $R(a)\in  \mathrm{End}(V)$ such that
-$$
-R(ab+c)=R(b)R(a)+R(c).
-$$
-Given either a left or a right multiplication we can always construct a right or a left multiplication by using any anti-automorphism of the algebra, for instance
-$$
-R(a)=L(\ba{a}).
-$$
-A bi-module is a module which is both a left- and a right-module, or with other words, a module where left and right multiplication commute, i.e. 
-$$
-L(a)R(b)=R(b)L(a), \mbox{ for all }a,b\in \R_{0,n}.
-$$
-If $V$ is a vector space of $\R_{0,n}$-valued function we consider the left (right) multiplication defined by pointwise multiplication
-$$
-(L(a)f)(x)=a(f(x)) \mbox{ and } (R(a)f)(x)=a(f(x)).
-$$
-Also a mapping $K$ between two right modules $V$ and $W$ is called a $\R_{0,n}$-linear mapping if
-$$
-K(fa+g)=K(f)a+K(g).
-$$
-This considerations give rise to the following right modules of $\R_{0,n}$-valued functions defined over any suitable subset $E$ inside the null-cone of $\R^{1,n}$:
+Suppose $\Omega\subset\mathbb{R}^{n}$ is a bounded domain, with sufficiently smooth boundary $\Gamma$. We consider a domain $\Omega_T=[0,T]\times\Omega$. We will be interested in functions $f:\Omega_T \rightarrow\R_{0,n}$, which might be written as $f(x)=\sum_{A}f_A(x)e_A$ with $f_A$ being $\R$-valued. Properties, such continuity, differentiability, integrability, and so on, can be ascribed coordinate-wise or directly. We also consider the following right modules of $\R_{0,n}$-valued functions defined over any suitable subset $E$ inside the null-cone of $\R^{1,n}$:
 \begin{itemize}
 	\item $C^k(E,\Cl), k\in\mathcal{N}\cup\{0\}$-- the right module of all $\Cl$-valued functions, $k$-times continuously differentiable in $E$. It becomes a right Banach module with the norm
 	$$
@@ -267,7 +243,7 @@ The classic CK-extension method allows one to construct monogenic functions over
     \partial_{x_0} u(x_0,\un{x}) + a(x_0)\un{\D} u(x_0,\un{x}) = 0, & \text{with } x_0 \in (0, T] \text{ and } \un{x} \in \un{\Omega}, \\
     u(0,\un{x}) = u_0(\un{x}),\;\; \un{x}\in \un{\Omega},
     \end{cases}    \]
-     where $A(x) = \int_0^x a(t) dt.$ 
+     where $A(x_0) = \int_0^{x_0} a(t) dt.$ 
 
     
 \end{theorem}
@@ -371,11 +347,11 @@ E(x_0) := \mathrm{Re}\left(\langle a(x_0)\hat{u}(x_0), \hat{u}(x_0) \rangle\righ
 \]
 and we need to estimate its variations in the variable $x_0$. Using the fact that $a \in \text{Lip}([0, T])$ and $a(x_0) \geq a_0 > 0$ we have immediately
 \begin{equation}
-\min_{x_0 \in [0,T]} \{a(x_0)\}\|\hat{u}\|^2\leq E(x_0) \leq \max_{t \in [0,T]} \{a(x_0)\} \|\hat{u}\|^2 .
+\min_{x_0 \in [0,T]} \{a(x_0)\}\|\hat{u}\|^2\leq E(x_0) \leq \max_{x_0 \in [0,T]} \{a(x_0)\} \|\hat{u}\|^2 .
 \label{eq3.5-td}
 \end{equation}
 
-In particular, in this case the condition on $a$ ensures the existence of two strictly positive constants $c_0 $ and $ c_1 $ such that $ c_0 = \min_{t \in [0,T]} a(x_0) $ and $ c_1 = \max_{t \in [0,T]} a(x_0) $.
+In particular, in this case the condition on $a$ ensures the existence of two strictly positive constants $c_0 $ and $ c_1 $ such that $ c_0 = \min_{x_0 \in [0,T]} a(x_0) $ and $ c_1 = \max_{x_0 \in [0,T]} a(x_0) $.
 
 Therefore, inequality~(\ref{eq3.5-td}) can be written as
 \begin{equation}
@@ -396,7 +372,7 @@ With $w=\langle a(x_0)^2\hat{u}(x_0), \hat{u}(x_0) \rangle$ and $z=i\xi$ the las
 \partial_{x_0}E(x_0)=\mathrm{Re}\left(\langle \partial_{x_0}a(x_0)\hat{u}(x_0), \hat{u}(x_0) \rangle \right)\leq \sup_{x_0 \in [0,T]} |\partial_{x_0}a(x_0)| \|\hat{u}(x_0)\|^2.
 \label{eq3.7-td}
 \end{equation}
-Putting $c' := c_0^{-1} \sup_{x_0 \in [0,T]} |\partial_{x_0}a(x_0)|$, we get from~(\ref{eq3.7-td}) using~(\ref{eq3.6-td}) that
+Defining $c'$ as $c_0^{-1} \sup_{x_0 \in [0,T]} |\partial_{x_0}a(x_0)|$, we get from~(\ref{eq3.7-td}) using~(\ref{eq3.6-td}) that
 \begin{equation}
 \partial_{x_0}E(x_0)  \leq c'E(x_0).
 \label{eq3.8-td}
@@ -409,7 +385,7 @@ Therefore, putting together~(\ref{eq3.9-td}) and~(\ref{eq3.6-td}), we obtain
 \begin{equation*}
 c_0\|\hat{u}(x_0)\|^2 \leq E(x_0) \leq cE(0) \leq cc_1\|\hat{u}(0)\|^2.
 \end{equation*}
-This means that there exists a constant $C > 0$ independent of $t$ such that $\|\hat{u}(x_0)\|^2 \leq C\|\hat{u}(0)\|^2$. From this we have
+This means that there exists a constant $C > 0$ independent of $x_0$ such that $\|\hat{u}(x_0)\|^2 \leq C\|\hat{u}(0)\|^2$. From this we have
 \begin{equation*}
 \|u(x_0)\|^2  \leq C\|u_0\|^2,
 \end{equation*}
@@ -922,13 +898,13 @@ of t such that
 Now fourrier transform
 \[
 \begin{cases}
-\hat{u}_t(t, \x) -i\xi a(x_0)\hat{u}(x_0, \x) = 0\\
-\hat{u}(0, \x) = \hat{u}_0(\x)
+\hat{u}_t(t, \un{x}) -i\xi a(x_0)\hat{u}(x_0, \un{x}) = 0\\
+\hat{u}(0, \un{x}) = \hat{u}_0(\x)
 \end{cases}
 \]
 
 this is the same as above so we get:
-\[\norm{\hat{u}(x_0, \x)}^2 \leq C\norm{\hat{u}_0(\x)}^2\]
+\[\norm{\hat{u}(x_0, \un{x})}^2 \leq C\norm{\hat{u}_0(\x)}^2\]
 
 \hrulefill
 
@@ -973,13 +949,13 @@ we get
 Now fourrier transform
 \[
 \begin{cases}
-\hat{u}_t(t, \x) -i\xi a(x_0)\hat{u}(x_0, \x) = \hat{f}\\
-\hat{u}(0, \x) = \hat{u}_0(\x)
+\hat{u}_t(x_0, \un{x}) -i\xi a(x_0)\hat{u}(x_0, \un{x}) = \hat{f}\\
+\hat{u}(0, \un{x}) = \hat{u}_0(\x)
 \end{cases}
 \]
 
 this is the same as above so we get:
-\[\norm{\hat{u}(x_0, \x)}^2 \leq C_1\norm{\hat{u}_0(\x)}^2 + C_2\norm{\hat{f}(\x)}^2\]
+\[\norm{\hat{u}(x_0, \un{x})}^2 \leq C_1\norm{\hat{u}_0(\x)}^2 + C_2\norm{\hat{f}(\x)}^2\]
 
 \hrulefill
 %%%%
